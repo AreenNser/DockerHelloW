@@ -1,0 +1,31 @@
+build docker Image --> docker build -t <image name> .
+docker build -t areen-docker-img2 .
+docker build -t areen-docker-img2 --build-arg DATETIME=$(date -u +'%Y-%m-%dT%H:%M:%SZ') .
+docker build -t areen-docker-img2 --build-arg  TESTA=1021 --build-arg TESTB=1002 --build-arg USERNAME=AreenNser .
+docker build -t areen-docker-img2 --build-arg  TESTA=1021 --build-arg TESTB=1002 --build-arg USERNAME=AreenNser --build-arg DATETIME=$(date -u +'%Y-%m-%dT%H:%M:%SZ') .
+build Container image --> docker run -it -p <free port>:<Internal port (node)> <image name>
+** if the ARG value wihh space need to make it string
+
+docker run -it -p 9000:8080 areen-docker-img2
+
+Build with ENV varible( --env) the varible stored in process.env.ENVNAME (node)
+ docker run -it --env USERNAME=areennser --env TESTA=test010 --env TESTB=test020    -p  9000:8080 areen-docker-img2
+docker inspect -f '{{ .Created }}' IMAGE_OR_CONTAINER
+nodemon to update image/containr --> not all the library avilible in ISRAEL
+
+get all docker images
+docker images -a
+
+
+remove all Containers-->docker rm -vf $(docker ps -a -q)
+kill all node running from CMD in case Port not avilible-->taskkill /IM node.exe -F
+
+ARG VS ENV
+https://vsupalov.com/docker-arg-vs-env/
+
+
+ docker save -o C:/Users/god-o/Desktop/img2.tar areen-docker-im32
+docker export --output C:/Users/god-o/Desktop/areen-docker-img2.tar areen-docker-im32
+ 
+ docker import C:/Users/god-o/Desktop/areen-docker-img2.zip imortimage-12
+
